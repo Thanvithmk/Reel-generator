@@ -15,11 +15,6 @@ def create_reel(folder):
 
     background_music_path = 'static/songs/1.mp3'
     
-    # 1. -i input.txt (video stream)
-    # 2. -i audio.mp3 (voice-over stream)
-    # 3. -i static/songs/1.mp3 (background music stream)
-    # 4. -filter_complex: Mixes the two audio tracks ([a_voice] at full volume, [a_music] at 30% volume)
-    # 5. The final video will run for the duration of the video stream (4 seconds).
     command=f'''ffmpeg -f concat -safe 0 -i user_uploads/{folder}/input.txt -i user_uploads/{folder}/audio.mp3 -i {background_music_path} -filter_complex "[0:v]scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black[v];[1:a]volume=1.0[a_voice];[2:a]volume=0.3[a_music];[a_voice][a_music]amix=inputs=2:duration=shortest:normalize=0[a]" -map "[v]" -map "[a]" -c:v libx264 -c:a aac -r 30 -pix_fmt yuv420p static/reels/{folder}.mp4'''
     subprocess.run(command, shell=True,check=True)
     print(folder)

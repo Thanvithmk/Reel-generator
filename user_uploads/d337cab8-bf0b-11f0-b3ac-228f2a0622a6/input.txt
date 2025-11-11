@@ -1,0 +1,12 @@
+file 'G47lSrrbQAEMIg9.jpg'
+duration 1
+file 'GettyImages-2217853650.jpg.webp'
+duration 1
+file 'GsiYQAAa8AAeqeM.jpg'
+duration 1
+file 'GsiuE5BasAMz67J.avif'
+duration 1
+file 'images (1).jpeg'
+duration 1
+file 'images.jpeg'
+duration 1
