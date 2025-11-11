@@ -7,7 +7,7 @@ UPLOAD_FOLDER = 'user_uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = "/Users/thanvithmk/git_clones/Reel-generator/Reel-generator/06_VidSnap/user_uploads"
+app.config['UPLOAD_FOLDER'] = "user_uploads"
  
 
 @app.route("/")

@@ -2,7 +2,7 @@ import os,time
 from text_to_audio import text_to_speech_file
 
 def text_to_audio(folder):
-    with open(f"/Users/thanvithmk/git_clones/Reel-generator/Reel-generator/06_VidSnap/user_uploads/{folder}/desc.txt") as f:
+    with open(f"user_uploads/{folder}/desc.txt") as f:
         text=f.read()
     text_to_speech_file(text,folder)
     
@@ -14,7 +14,7 @@ if __name__=="__main__":
             with open("done.txt","r") as f:
                 done_folders=f.readlines()
             done_folders=[x.strip() for x in done_folders]
-            folders=os.listdir("/Users/thanvithmk/git_clones/Reel-generator/Reel-generator/06_VidSnap/user_uploads")
+            folders=os.listdir("user_uploads")
             for folder in folders:
                 if (folder not in done_folders):
                     text_to_audio(folder)
