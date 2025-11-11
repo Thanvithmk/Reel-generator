@@ -7,7 +7,7 @@ UPLOAD_FOLDER = 'user_uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = "user_uploads"
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
  
 
 @app.route("/")
@@ -31,15 +31,15 @@ def create():
                 if(not(os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'], rec_id)))):
                     os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], rec_id))
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], rec_id,  filename))
-                
                 input_files.append(file.filename)
+                print(file.filename)
             # Capture the description and save it to a file
             with open(os.path.join(app.config['UPLOAD_FOLDER'], rec_id, "desc.txt"), "w") as f:
                 f.write(desc)
-                
         for fl in input_files:
-            with open(os.path.join(app.config['UPLOAD_FOLDER'], rec_id, "input.txt"), "a") as file_list:
-                file_list.write(f"file '{fl}'\nduration 1\n")
+            with open(os.path.join(app.config['UPLOAD_FOLDER'], rec_id,  "input.txt"), "a") as f:
+                f.write(f"file '{fl}'\nduration 1\n")
+
 
     return render_template("create.html", myid=myid)
 
